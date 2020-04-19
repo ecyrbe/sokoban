@@ -1,13 +1,14 @@
 import React from "react";
 import "./Game.css";
-import { useSokoban, Direction } from "./hooks/sokoban";
+import { Help } from "./components/help";
+import { useSokoban, Direction, State } from "./hooks/sokoban";
 import { useKeyBoard } from "./hooks/keyboard";
 import style from "./components/sokoban.module.css";
 import { cn } from "./utils/classnames";
 import { styleFrom } from "./utils/block-styles";
 
 function Game() {
-  const { level, move, next, restart } = useSokoban();
+  const { index, level, state, move, next, restart } = useSokoban();
   useKeyBoard(
     (event) => {
       switch (event.code) {
@@ -36,7 +37,11 @@ function Game() {
   );
   return (
     <div className="game">
-      <div className={style.levelTitle}>{level.name}</div>
+      <div className={style.state}>
+        <div className={style.levelPrefix}>Level {index + 1} :</div>
+        <div className={style.levelTitle}>{level.name}</div>
+      </div>
+
       <div className={style.board}>
         {level.shape.map((row) => (
           <div className={style.level}>
@@ -46,6 +51,13 @@ function Game() {
           </div>
         ))}
       </div>
+      <Help />
+      {state === State.completed && (
+        <div className={style.state}>
+          <div className={style.levelState}>LEVEL completed </div>
+          <div className={style.helpNext}>Press ENTER to load next LEVEL</div>
+        </div>
+      )}
     </div>
   );
 }

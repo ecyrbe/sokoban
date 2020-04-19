@@ -46,7 +46,7 @@ function getPlayerPosition<T extends Level>(level: T): Position {
 }
 
 export function useSokoban() {
-  const { level, loadNext } = useLevels();
+  const { index, level, loadNext } = useLevels();
   const [state, setState] = useState<State>(State.playing);
   const initboard = useCallback(
     () => ({
@@ -105,7 +105,9 @@ export function useSokoban() {
           setBoard(next);
           if (
             !next.shape.some((row) =>
-              row.some((block) => block === Block.objective)
+              row.some((block) =>
+                [Block.objective, Block.playerJective].includes(block)
+              )
             )
           )
             setState(State.completed);
@@ -131,5 +133,5 @@ export function useSokoban() {
     if (board.name !== level.name) setBoard(initboard());
   }, [board, state, level, loadNext, next, restart, initboard, move]);
 
-  return { level: board, state, move, next, restart };
+  return { index, level: board, state, move, next, restart };
 }

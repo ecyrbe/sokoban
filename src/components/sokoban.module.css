@@ -1,7 +1,16 @@
+.state {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .board {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 30px;
 }
 
 .level {
@@ -11,6 +20,60 @@
   justify-content: flex-start;
 }
 
+.levelPrefix {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: gray;
+  margin-right: 20px;
+}
+.levelTitle {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: #00b8a9;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+.levelState {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #00b8a9;
+}
+
+.helpNext {
+  margin-left: 20px;
+  font-size: 1em;
+  color: gray;
+  animation: bounce 0.35s ease infinite alternate;
+}
+
+.help {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1em;
+  color: gray;
+}
+.descriptions {
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 .element {
   width: 50px;
   height: 50px;
@@ -33,19 +96,19 @@
 }
 
 .element.box {
-  background-color: #d4a5a5;
+  background-color: #ebcbae;
 }
 
 .element.boxjective {
-  background-color: #d4a5a5;
+  background-color: #ebcbae;
   outline: solid #eaffd0;
 }
 
 .element.player {
-  background-color: cadetblue;
+  background-color: #00b8a9;
 }
 
 .element.playerJective {
-  background-color: cadetblue;
+  background-color: #00b8a9;
   outline: solid #eaffd0;
 }

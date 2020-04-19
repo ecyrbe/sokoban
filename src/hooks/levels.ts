@@ -81,5 +81,5 @@ export function useLevels() {
     localStorage.setItem(SOKOBAN_LEVEL_KEY, String(index + 1));
   }, [index]);
 
-  return { level, loadNext };
+  return { index, level, loadNext };
 }
