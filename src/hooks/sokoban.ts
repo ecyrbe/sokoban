@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Level, Block, useLevels } from "./levels";
+import { cloneDeep } from "lodash";
 
 export enum Direction {
   Left,
@@ -28,9 +29,11 @@ function directionToPosition(direction: Direction) {
   return dirPositions.get(direction)!;
 }
 
-type Board = Level & {
-  playerPosition: Position;
-};
+type Board = Array<
+  Level & {
+    playerPosition: Position;
+  }
+>;
 
 function getPlayerPosition<T extends Level>(level: T): Position {
   const row = level.shape.findIndex((blocks) =>
@@ -49,10 +52,12 @@ export function useSokoban() {
   const { index, level, loadNext } = useLevels();
   const [state, setState] = useState<State>(State.playing);
   const initboard = useCallback(
-    () => ({
-      ...level,
-      playerPosition: getPlayerPosition(level),
-    }),
+    () => [
+      {
+        ...level,
+        playerPosition: getPlayerPosition(level),
+      },
+    ],
     [level]
   );
   const [board, setBoard] = useState<Board>(initboard);
@@ -60,49 +65,41 @@ export function useSokoban() {
     (direction: Direction) => {
       if (state === State.playing) {
         const dir = directionToPosition(direction);
-        const position = { ...board.playerPosition };
-        const nextPosition: Position = {
-          row: board.playerPosition.row + dir.row,
-          column: board.playerPosition.column + dir.column,
+        const last = board[board.length - 1];
+        let next = cloneDeep(last);
+        next.playerPosition = {
+          row: last.playerPosition.row + dir.row,
+          column: last.playerPosition.column + dir.column,
         };
-        let next = {
-          ...board,
-        };
+        // are we moving a block
+        let movingBlock = false;
         if (
           [Block.box, Block.boxjective].includes(
-            board.shape[nextPosition.row][nextPosition.column]
+            last.shape[next.playerPosition.row][next.playerPosition.column]
           ) &&
           [Block.empty, Block.objective].includes(
-            board.shape[nextPosition.row + dir.row][
-              nextPosition.column + dir.column
+            last.shape[next.playerPosition.row + dir.row][
+              next.playerPosition.column + dir.column
             ]
           )
         ) {
-          next.shape = next.shape.map((line, row) =>
-            line.map((block, column) =>
-              nextPosition.row === row && nextPosition.column === column
-                ? block - Block.box
-                : block
-            )
-          );
-          next.shape = next.shape.map((line, row) =>
-            line.map((block, column) =>
-              nextPosition.row + dir.row === row &&
-              nextPosition.column + dir.column === column
-                ? block + Block.box
-                : block
-            )
-          );
+          next.shape[next.playerPosition.row][next.playerPosition.column] -=
+            Block.box;
+          next.shape[next.playerPosition.row + dir.row][
+            next.playerPosition.column + dir.column
+          ] += Block.box;
+          movingBlock = true;
         }
+        //are we moving into an empty space
         if (
           [Block.empty, Block.objective].includes(
-            next.shape[nextPosition.row][nextPosition.column]
+            next.shape[next.playerPosition.row][next.playerPosition.column]
           )
         ) {
-          next.shape[position.row][position.column] -= Block.player;
-          next.playerPosition = nextPosition;
-          next.shape[nextPosition.row][nextPosition.column] += Block.player;
-          setBoard(next);
+          next.shape[last.playerPosition.row][last.playerPosition.column] -=
+            Block.player;
+          next.shape[next.playerPosition.row][next.playerPosition.column] +=
+            Block.player;
           if (
             !next.shape.some((row) =>
               row.some((block) =>
@@ -111,6 +108,9 @@ export function useSokoban() {
             )
           )
             setState(State.completed);
+          if (!movingBlock) board.pop();
+
+          setBoard([...board, next]);
         }
       }
     },
@@ -123,6 +123,11 @@ export function useSokoban() {
       setState(State.playing);
     }
   }, [state, loadNext]);
+  const undo = useCallback(() => {
+    if (state === State.playing && board.length > 1) {
+      setBoard(board.slice(0, -1));
+    }
+  }, [state, board]);
   const restart = useCallback(() => {
     if (state === State.playing) {
       setBoard(initboard());
@@ -130,8 +135,16 @@ export function useSokoban() {
   }, [state, initboard]);
 
   useEffect(() => {
-    if (board.name !== level.name) setBoard(initboard());
+    if (board[0].name !== level.name) setBoard(initboard());
   }, [board, state, level, loadNext, next, restart, initboard, move]);
 
-  return { index, level: board, state, move, next, restart };
+  return {
+    index,
+    level: board[board.length - 1],
+    state,
+    move,
+    next,
+    undo,
+    restart,
+  };
 }

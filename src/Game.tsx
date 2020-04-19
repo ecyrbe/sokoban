@@ -8,7 +8,7 @@ import { cn } from "./utils/classnames";
 import { styleFrom } from "./utils/block-styles";
 
 function Game() {
-  const { index, level, state, move, next, restart } = useSokoban();
+  const { index, level, state, move, next, undo, restart } = useSokoban();
   useKeyBoard(
     (event) => {
       switch (event.code) {
@@ -27,13 +27,24 @@ function Game() {
         case "Enter":
           next();
           break;
+        case "Backspace":
+          undo();
+          break;
         case "Escape":
           restart();
           break;
       }
       event.preventDefault();
     },
-    ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Enter", "Escape"]
+    [
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Enter",
+      "Backspace",
+      "Escape",
+    ]
   );
   return (
     <div className="game">
