@@ -1,0 +1,51 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.level {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.element {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.element.empty {
+  background-color: white;
+}
+
+.element.wall {
+  background-color: #928a97;
+}
+
+.element.objective {
+  background-color: #eaffd0;
+  border-radius: 0px;
+  outline: solid #eaffd0;
+}
+
+.element.box {
+  background-color: #d4a5a5;
+}
+
+.element.boxjective {
+  background-color: #d4a5a5;
+  outline: solid #eaffd0;
+}
+
+.element.player {
+  background-color: cadetblue;
+}
+
+.element.playerJective {
+  background-color: cadetblue;
+  outline: solid #eaffd0;
+}
