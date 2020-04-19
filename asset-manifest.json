@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sokoban/static/css/main.4c9a82b5.chunk.css",
-    "main.js": "/sokoban/static/js/main.83067931.chunk.js",
-    "main.js.map": "/sokoban/static/js/main.83067931.chunk.js.map",
+    "main.css": "/sokoban/static/css/main.7eb80cba.chunk.css",
+    "main.js": "/sokoban/static/js/main.e16f0be5.chunk.js",
+    "main.js.map": "/sokoban/static/js/main.e16f0be5.chunk.js.map",
     "runtime-main.js": "/sokoban/static/js/runtime-main.79158c23.js",
     "runtime-main.js.map": "/sokoban/static/js/runtime-main.79158c23.js.map",
     "static/js/2.6dbd2f9f.chunk.js": "/sokoban/static/js/2.6dbd2f9f.chunk.js",
     "static/js/2.6dbd2f9f.chunk.js.map": "/sokoban/static/js/2.6dbd2f9f.chunk.js.map",
     "index.html": "/sokoban/index.html",
-    "precache-manifest.e1d7fac5bfbc660f063c0f8c6f93ca01.js": "/sokoban/precache-manifest.e1d7fac5bfbc660f063c0f8c6f93ca01.js",
+    "precache-manifest.b3ffd1a043bdd5381d5ca4850f2708e8.js": "/sokoban/precache-manifest.b3ffd1a043bdd5381d5ca4850f2708e8.js",
     "service-worker.js": "/sokoban/service-worker.js",
-    "static/css/main.4c9a82b5.chunk.css.map": "/sokoban/static/css/main.4c9a82b5.chunk.css.map",
+    "static/css/main.7eb80cba.chunk.css.map": "/sokoban/static/css/main.7eb80cba.chunk.css.map",
     "static/js/2.6dbd2f9f.chunk.js.LICENSE.txt": "/sokoban/static/js/2.6dbd2f9f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.79158c23.js",
     "static/js/2.6dbd2f9f.chunk.js",
-    "static/css/main.4c9a82b5.chunk.css",
-    "static/js/main.83067931.chunk.js"
+    "static/css/main.7eb80cba.chunk.css",
+    "static/js/main.e16f0be5.chunk.js"
   ]
 }
