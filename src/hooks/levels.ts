@@ -31,21 +31,22 @@ export interface SokobanLevel {
 
 export enum Block {
   empty,
-  box,
   objective,
-  boxjective,
-  wall,
+  box,
+  boxOnObjective,
   player,
-  playerJective = 7,
+  playerOnObjective,
+  wall,
 }
 
 const levelBlocks = {
   " ": Block.empty,
-  $: Block.box,
   ".": Block.objective,
-  "*": Block.boxjective,
-  "#": Block.wall,
+  $: Block.box,
+  "*": Block.boxOnObjective,
   "@": Block.player,
+  "+": Block.playerOnObjective,
+  "#": Block.wall,
 };
 
 type LevelBlock = keyof typeof levelBlocks;

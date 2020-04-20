@@ -37,15 +37,18 @@ type Board = Array<
 
 function getPlayerPosition<T extends Level>(level: T): Position {
   const row = level.shape.findIndex((blocks) =>
-    blocks.some((block) => block === Block.player)
+    blocks.some((block) =>
+      [Block.player, Block.playerOnObjective].includes(block)
+    )
   );
   if (row >= 0) {
-    const column = level.shape[row].findIndex(
-      (block) => block === Block.player
+    const column = level.shape[row].findIndex((block) =>
+      [Block.player, Block.playerOnObjective].includes(block)
     );
     return { row, column };
   }
-  throw new Error("Invalid level, Player position not found");
+  throw new Error(`Invalid level, Player position not found : 
+  ${level.shape}`);
 }
 
 export function useSokoban() {
@@ -74,7 +77,7 @@ export function useSokoban() {
         // are we moving a block
         let movingBlock = false;
         if (
-          [Block.box, Block.boxjective].includes(
+          [Block.box, Block.boxOnObjective].includes(
             last.shape[next.playerPosition.row][next.playerPosition.column]
           ) &&
           [Block.empty, Block.objective].includes(
@@ -103,7 +106,7 @@ export function useSokoban() {
           if (
             !next.shape.some((row) =>
               row.some((block) =>
-                [Block.objective, Block.playerJective].includes(block)
+                [Block.objective, Block.playerOnObjective].includes(block)
               )
             )
           )
