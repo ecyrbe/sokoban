@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import Original from "../datas/Original.json";
 import Atlas01 from "../datas/Atlas01.json";
 import Atlas02 from "../datas/Atlas02.json";
 import Atlas03 from "../datas/Atlas03.json";
@@ -54,7 +55,13 @@ type LevelBlock = keyof typeof levelBlocks;
 const SOKOBAN_LEVEL_KEY = "SokobanLevel";
 
 function loadLevels() {
-  const AllLevels = [Atlas01, Atlas02, Atlas03, Atlas04] as SokobanLevels[];
+  const AllLevels = [
+    Original,
+    Atlas01,
+    Atlas02,
+    Atlas03,
+    Atlas04,
+  ] as SokobanLevels[];
   return AllLevels.reduce<Level[]>(
     (acc, levels) => [
       ...acc,
