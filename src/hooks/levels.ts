@@ -62,19 +62,15 @@ function loadLevels() {
     Atlas03,
     Atlas04,
   ] as SokobanLevels[];
-  return AllLevels.reduce<Level[]>(
-    (acc, levels) => [
-      ...acc,
-      ...levels.LevelCollection.Level.map((level) => ({
-        name: level.Id,
-        shape: level.L.map((row) =>
-          Array.from(row).map((item) => levelBlocks[item as LevelBlock])
-        ),
-        width: Number(level.Width),
-        height: Number(level.Height),
-      })),
-    ],
-    []
+  return AllLevels.flatMap((levels) =>
+    levels.LevelCollection.Level.map((level) => ({
+      name: level.Id,
+      shape: level.L.map((row) =>
+        Array.from(row).map((item) => levelBlocks[item as LevelBlock])
+      ),
+      width: Number(level.Width),
+      height: Number(level.Height),
+    }))
   );
 }
 
