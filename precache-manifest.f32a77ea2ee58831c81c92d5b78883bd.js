@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "91850c139aeb9509a5a970950d95ee47",
+    "revision": "13b1f0efb6e1809c594a319f96ac36a2",
     "url": "/sokoban/index.html"
   },
   {
-    "revision": "6b5fd729d9a12590f484",
-    "url": "/sokoban/static/css/main.95a4ead4.chunk.css"
+    "revision": "bf565be204306a885c11",
+    "url": "/sokoban/static/css/main.93078985.chunk.css"
   },
   {
     "revision": "cc6c02869dc72f708270",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/sokoban/static/js/2.af7d38e4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6b5fd729d9a12590f484",
-    "url": "/sokoban/static/js/main.bc462499.chunk.js"
+    "revision": "bf565be204306a885c11",
+    "url": "/sokoban/static/js/main.1075a789.chunk.js"
   },
   {
     "revision": "9ff72358fffb95db9e7e",
