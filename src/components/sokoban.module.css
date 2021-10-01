@@ -86,7 +86,9 @@
 }
 
 .element.wall {
-  background-color: #928a97;
+  /*  background-color: #928a97;*/
+  background-image: url("../assets/wall.png");
+  background-size: 100%;
 }
 
 .element.objective {
@@ -96,19 +98,45 @@
 }
 
 .element.box {
-  background-color: #ebcbae;
+  /*  background-color: #ebcbae;*/
+  background-image: url("../assets/box-closed.png");
+  background-size: 100%;
 }
 
 .element.boxjective {
-  background-color: #ebcbae;
+  background-color: #eaffd0;
+  border-radius: 0px;
   outline: solid #eaffd0;
+  background-image: url("../assets/box-opened.png");
+  background-size: 100%;
 }
 
 .element.player {
-  background-color: #00b8a9;
+  background-color: white;
+}
+
+.playerup {
+  background-image: url("../assets/up.png");
+  background-size: 100%;
+}
+
+.playerdown {
+  background-image: url("../assets/down.png");
+  background-size: 100%;
+}
+
+.playerleft {
+  background-image: url("../assets/left.png");
+  background-size: 100%;
+}
+
+.playerright {
+  background-image: url("../assets/right.png");
+  background-size: 100%;
 }
 
 .element.playerJective {
-  background-color: #00b8a9;
+  background-color: #eaffd0;
+  border-radius: 0px;
   outline: solid #eaffd0;
 }

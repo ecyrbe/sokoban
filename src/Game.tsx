@@ -3,12 +3,14 @@ import "./Game.css";
 import { Help } from "./components/help";
 import { useSokoban, Direction, State } from "./hooks/sokoban";
 import { useKeyBoard } from "./hooks/keyboard";
+import { Block } from "./hooks/levels";
 import style from "./components/sokoban.module.css";
 import { cn } from "./utils/classnames";
-import { styleFrom } from "./utils/block-styles";
+import { styleFrom, styleDirection } from "./utils/block-styles";
 
 function Game() {
-  const { index, level, state, move, next, undo, restart } = useSokoban();
+  const { index, level, direction, state, move, next, undo, restart } =
+    useSokoban();
   useKeyBoard(
     (event) => {
       switch (event.code) {
@@ -57,7 +59,15 @@ function Game() {
         {level.shape.map((row) => (
           <div className={style.level}>
             {row.map((block) => (
-              <div className={cn(style.element, styleFrom(block)!)} />
+              <div
+                className={cn(
+                  style.element,
+                  styleFrom(block)!,
+                  [Block.player, Block.playerOnObjective].includes(block)
+                    ? styleDirection(direction)
+                    : ""
+                )}
+              />
             ))}
           </div>
         ))}
