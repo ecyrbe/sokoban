@@ -1,6 +1,6 @@
 {
   "name": "sokoban",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "homepage": "http://ecyrbe.github.io/sokoban",
   "private": true,
   "dependencies": {
