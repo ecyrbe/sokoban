@@ -86,32 +86,28 @@
 }
 
 .element.wall {
-  /*  background-color: #928a97;*/
   background-image: url("../assets/wall.png");
   background-size: 100%;
 }
 
 .element.objective {
-  background-color: #eaffd0;
-  border-radius: 0px;
-  outline: solid #eaffd0;
+  background-image: url("../assets/key.svg");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .element.box {
-  /*  background-color: #ebcbae;*/
   background-image: url("../assets/box-closed.png");
   background-size: 100%;
 }
 
 .element.boxjective {
-  background-color: #eaffd0;
-  border-radius: 0px;
-  outline: solid #eaffd0;
   background-image: url("../assets/box-opened.png");
   background-size: 100%;
 }
 
-.element.player {
+.element.player .element.playerJective {
   background-color: white;
 }
 
@@ -133,10 +129,4 @@
 .playerright {
   background-image: url("../assets/right.png");
   background-size: 100%;
-}
-
-.element.playerJective {
-  background-color: #eaffd0;
-  border-radius: 0px;
-  outline: solid #eaffd0;
 }
