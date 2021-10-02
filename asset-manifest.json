@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/sokoban/static/css/main.52895644.chunk.css",
+    "main.css": "/sokoban/static/css/main.190c35fc.chunk.css",
     "main.js": "/sokoban/static/js/main.307a4730.chunk.js",
     "main.js.map": "/sokoban/static/js/main.307a4730.chunk.js.map",
     "runtime-main.js": "/sokoban/static/js/runtime-main.4dac33c8.js",
@@ -8,16 +8,16 @@
     "static/js/2.a6f0bade.chunk.js": "/sokoban/static/js/2.a6f0bade.chunk.js",
     "static/js/2.a6f0bade.chunk.js.map": "/sokoban/static/js/2.a6f0bade.chunk.js.map",
     "index.html": "/sokoban/index.html",
-    "precache-manifest.60d4063af41d483cb2a11d8f9b7b2991.js": "/sokoban/precache-manifest.60d4063af41d483cb2a11d8f9b7b2991.js",
+    "precache-manifest.0ddb0a95039d3088a062f6949f96e5f1.js": "/sokoban/precache-manifest.0ddb0a95039d3088a062f6949f96e5f1.js",
     "service-worker.js": "/sokoban/service-worker.js",
-    "static/css/main.52895644.chunk.css.map": "/sokoban/static/css/main.52895644.chunk.css.map",
+    "static/css/main.190c35fc.chunk.css.map": "/sokoban/static/css/main.190c35fc.chunk.css.map",
     "static/js/2.a6f0bade.chunk.js.LICENSE.txt": "/sokoban/static/js/2.a6f0bade.chunk.js.LICENSE.txt",
     "static/media/sokoban.module.css": "/sokoban/static/media/key.fd18e470.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4dac33c8.js",
     "static/js/2.a6f0bade.chunk.js",
-    "static/css/main.52895644.chunk.css",
+    "static/css/main.190c35fc.chunk.css",
     "static/js/main.307a4730.chunk.js"
   ]
 }
