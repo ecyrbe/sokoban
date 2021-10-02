@@ -9,8 +9,7 @@ import { cn } from "./utils/classnames";
 import { styleFrom, styleDirection } from "./utils/block-styles";
 
 function Game() {
-  const { index, level, direction, state, move, next, undo, restart } =
-    useSokoban();
+  const { index, level, state, move, next, undo, restart } = useSokoban();
   useKeyBoard(
     (event) => {
       switch (event.code) {
@@ -64,7 +63,7 @@ function Game() {
                   style.element,
                   styleFrom(block)!,
                   [Block.player, Block.playerOnObjective].includes(block)
-                    ? styleDirection(direction)
+                    ? styleDirection(level.playerDirection)
                     : ""
                 )}
               />

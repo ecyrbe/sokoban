@@ -32,6 +32,7 @@ function directionToPosition(direction: Direction) {
 type Board = Array<
   Level & {
     playerPosition: Position;
+    playerDirection: Direction;
   }
 >;
 
@@ -54,12 +55,12 @@ function getPlayerPosition<T extends Level>(level: T): Position {
 export function useSokoban() {
   const { index, level, loadNext } = useLevels();
   const [state, setState] = useState<State>(State.playing);
-  const [direction, setDirection] = useState(Direction.Right);
   const initboard = useCallback(
     () => [
       {
         ...level,
         playerPosition: getPlayerPosition(level),
+        playerDirection: Direction.Right,
       },
     ],
     [level]
@@ -68,7 +69,6 @@ export function useSokoban() {
   const move = useCallback(
     (direction: Direction) => {
       if (state === State.playing) {
-        setDirection(direction);
         const dir = directionToPosition(direction);
         const last = board[board.length - 1];
         let next = cloneDeep(last);
@@ -76,6 +76,7 @@ export function useSokoban() {
           row: last.playerPosition.row + dir.row,
           column: last.playerPosition.column + dir.column,
         };
+        next.playerDirection = direction;
         // are we moving a block
         let movingBlock = false;
         if (
@@ -145,7 +146,6 @@ export function useSokoban() {
 
   return {
     index,
-    direction,
     level: board[board.length - 1],
     state,
     move,
